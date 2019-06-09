@@ -1,0 +1,5 @@
+{
+    "files.associations": {
+        "nrf_drv_twi.h": "c"
+    }
+}
