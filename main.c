@@ -121,7 +121,7 @@ static volatile bool rotationRead = false;
 
 static volatile bool CrankRevsChange = false;
 static volatile uint16_t CrankRevs = 0;
-static volatile uint16_t NoChangeForMS = 0;
+static volatile uint32_t NoChangeForMS = 0;
 
 static volatile bool IsGyroInitialized = false;
 static volatile bool IsGyroTimerRunning = false;
@@ -553,6 +553,9 @@ static void gyroTimerStop()
 static void accelerometer_timeout_handler(void *p_context)
 {
     UNUSED_PARAMETER(p_context);
+
+    NRF_LOG_INFO("NoChangeForMS: %d", NoChangeForMS);
+
 
     if (IsIdle == false && NoChangeForMS > TIMEOUT_TO_SLEEP)
     {
